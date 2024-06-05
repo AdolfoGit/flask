@@ -12,6 +12,7 @@ def home():
         <title>Mi Página</title>
         <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     </head>
     <body class="bg-gray-100">
         <div class="container mx-auto mt-10">
@@ -29,12 +30,22 @@ def home():
                     </div>
                     <p class="text-gray-700">Web desplegada en render utilizando python con flask, haciendo uso de git con gitHub.</p>
                 </div>
-                <div class="p-5 flex justify-end space-x-2">
-                    <button class="material-icons text-blue-500"><a href='https://web.facebook.com'>facebook</a></button>
-                    
-                </div>
+                    <div class="p-5 flex justify-end space-x-2">
+                        <button class="material-icons text-blue-500"><a href='https://web.facebook.com'>facebook</a></button>
+                         <button class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" onclick="mostrarMensaje()">Dar clic</button>
+                    </div>
             </div>
         </div>
+        <script>
+             function mostrarMensaje() {
+                Swal.fire({
+                    title: '¡Gracias por ver!',
+                    text: 'Bonito día :)',
+                    icon: 'success',
+                    confirmButtonText: 'Cerrar'
+                });
+            }
+        </script>
         <script src="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.js"></script>
     </body>
     </html>

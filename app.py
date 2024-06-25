@@ -11,7 +11,7 @@ app = Flask(__name__)
 logging.basicConfig(level=logging.DEBUG)
 
 # Cargar el modelo entrenado
-model = joblib.load('modeloRf.pkl')
+model = joblib.load('modeloRf93.pkl')
 scaler = joblib.load('dataFrameScalado.pkl')
 app.logger.debug('Modelo cargado correctamente.')
 
@@ -55,7 +55,7 @@ def predict():
         prediccion = model.predict(scaled_data_for_prediction)
 
           # Devolver la predicción como JSON
-        prediction_value = float(prediccion[0]) # Convertir a float si es necesario
+        prediction_value = round(float(prediccion[0]), 2)
 
         return jsonify({'prediction': prediction_value})
      

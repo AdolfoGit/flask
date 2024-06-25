@@ -27,7 +27,7 @@
                 if (data.error) {
                     document.getElementById('resultado').innerText = 'Error: ' + data.error;
                 } else {
-                    document.getElementById('resultado').innerText = 'El diagnóstico del paciente es ' + data.prediction;
+                    document.getElementById('resultado').innerText = 'El porcentaje de recomendacion del producto es ' + data.prediction;
                 }
             })
             .catch(error => {
@@ -41,18 +41,42 @@
     <div class="flex justify-center w-full h-full">
         <form id="formulario" onsubmit="clasificarPaciente(event)" class="shadow-lg p-4 mt-5"> 
             <label for="temperature-slider" class="pl-4 block text-gray-700 text-sm font-bold mb-2">Calificación promedio otorgada a productos similares</label>
-            <input type="text" id="calificacion" class="borde">
+            <input 
+                type="number" 
+                id="calificacion" 
+                name="calificacion"
+                step="0.01" 
+        
+                class="border rounded px-3 py-2 w-full"
+            >
           
             <label for="temperature-slider" class="pl-4 block text-gray-700 text-sm font-bold mb-2">Número de productos similares comprados hasta el momento </label>
-            <input type="text" id="precioMedio" class="borde">
-
+            <input 
+                type="number" 
+                id="precioMedio" 
+                name="precioMedio"
+                step="0.01" 
+          
+                class="border rounded px-3 py-2 w-full"
+            >
             <label for="temperature-slider" class="pl-4 block text-gray-700 text-sm font-bold mb-2">Puntuación de opinión de los clientes</label>
-            <input type="text" id="puntuacion" class="borde-1">
+            <input 
+                type="number" 
+                id="puntuacion" 
+                name="puntuacion"
+                step="0.01" 
+                class="border rounded px-3 py-2 w-full"
+            >
 
             <label for="temperature-slider" class="pl-4 block text-gray-700 text-sm font-bold mb-2">Precio del producto</label>
-            <input type="text" id="precioProducto" class="borde"><br>
-         
-            <button type="submit"  class="ml-4 mt-4 shadow-lg p-2 hover:text-blue-300 bg-blue-200 rounded-md ">Enviar</button>
+            <input 
+                type="number" 
+                id="precioProducto" 
+                name="precioProducto"
+                step="0.01" 
+                class="border rounded px-3 py-2 w-full"
+            >
+            <button type="submit"  class=" w-full mt-2 shadow-lg p-2 hover:text-blue-300 bg-blue-200 rounded-md ">Enviar</button>
             <p id="resultado">  </p>
         </form>
 

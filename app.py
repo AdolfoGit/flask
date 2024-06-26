@@ -28,7 +28,7 @@ def predict():
         precioProducto =float(request.form['precioProducto'])
         puntuacion =float(request.form['puntuacion'])
 
-        input_data = pd.DataFrame({
+        data = pd.DataFrame({
             'Number of clicks on similar products': [0],
             'Number of similar products purchased so far': [0],
             'Average rating given to similar products': [calificacion],
@@ -45,19 +45,15 @@ def predict():
             'Gender_male':[0]
         })
 
-  # Escalar los datos de entrada
-        scaled_data = scaler.transform(input_data)
 
-        # Seleccionar solo las características usadas para el modelo
-        scaled_data_for_prediction = scaled_data[:, [2,3,6,7]]  # Asegúrate de que estos índices son correctos
+        scaled_data = scaler.transform(data)
+        scaled_data_for_prediction = scaled_data[:, [2,3,6,7]]
 
-        # Realizar la predicción con los datos escalados
         prediccion = model.predict(scaled_data_for_prediction)
 
-          # Devolver la predicción como JSON
-        prediction_value = round(float(prediccion[0]), 2)
+        resultado = round(float(prediccion[0]), 2)
 
-        return jsonify({'prediction': prediction_value})
+        return jsonify({'prediction': resultado})
      
     except Exception as e:
         app.logger.error(f'Error en la predicción: {str(e)}')
